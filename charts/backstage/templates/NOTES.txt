@@ -1,7 +1,0 @@
-Thank you for installing {{ .Chart.Name }}.
-
-This is the unofficial Helm chart for backstage.
-
-To explore your backstage deployment please run the following command:
-
-

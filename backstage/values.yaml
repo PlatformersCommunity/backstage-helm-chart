@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: "ghcr.io/guymenahem/backstage"
+  repository: "ghcr.io/guymenahem/backstage/"
   name: "backstage-argocd-workshop"
   tag: "1.0.4"
   pullPolicy: IfNotPresent
@@ -25,18 +25,14 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-
-securityContext: {}
-
 service:
   type: ClusterIP
   port: 80
 
 resources: 
    limits:
-     cpu: 100m
-     memory: 128Mi
+     cpu: 1000m
+     memory: 512Mi
    requests:
      cpu: 100m
      memory: 128Mi
@@ -63,8 +59,31 @@ catalog:
 backstage:
   baseURL: "https://127.0.0.1:8080/"
 
-argocd:
-  URL: "argocd-server.svc.argocd.cluster.local"
 
+appConfig: |
+  app:
+    baseUrl: http://${BASE_URL}:7007
 
+  backend:
+    baseUrl: http://${BASE_URL}:7007
+    listen: ':7007'
 
+    database:
+      client: pg
+      connection:
+        host: ${POSTGRES_HOST}
+        port: ${POSTGRES_PORT}
+        user: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+
+  integrations:
+    github:
+      - host: github.com
+        token: ${GITHUB_TOKEN}
+
+  catalog:
+    locations:
+    - type: url
+      target: ${CATALOG_LOCATION}
+      rules:
+      - allow: [Component, System, API, Resource, Location]

@@ -27,6 +27,7 @@ kind: Secret
 type: kubernetes.io/basic-auth
 metadata:
   name: app-secret
+  namespace: backstage
 data:
   username: YXBw
   password: cGFzc3dvcmQ=
@@ -43,9 +44,19 @@ spec:
     size: 1Gi
   bootstrap:
     initdb:
+      secret:
+        name: app-secret
       postInitSQL:
         - ALTER ROLE app CREATEDB
 EOF
 ```
 
+## Deploy Backstage
 
+- Close this repo
+
+- Install the chart
+
+```bash
+helm upgrade --install  backstage ./backstage -n backstage
+```

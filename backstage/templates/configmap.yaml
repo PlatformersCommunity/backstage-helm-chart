@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "backstage.name" . }}-config
+data:
+  POSTGRES_PORT: {{ .Values.postgres.port | quote}}
+  POSTGRES_HOST: {{ .Values.postgres.host }}
+  CATALOG_LOCATION: {{ .Values.catalog.location }}
+  BASE_URL: {{ .Values.backstage.baseURL }}
+

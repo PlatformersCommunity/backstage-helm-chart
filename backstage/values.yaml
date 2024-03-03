@@ -54,7 +54,7 @@ postgres:
   password: password
 
 catalog:
-  demoCatalogLocation: "https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml"
+  demoCatalogLocation: "https://github.com/PlatformersCommunity/backstage-helm-chart/blob/main/demo-catalog/all.yaml"
   customCatalogLocation: "None"
 
 backstage:

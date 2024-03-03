@@ -27,7 +27,7 @@ podAnnotations: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 7007
 
 resources: 
    limits:
@@ -57,17 +57,21 @@ catalog:
   location: "https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml"
 
 backstage:
-  baseURL: "https://127.0.0.1:8080/"
+  baseURL: "http://localhost"
 
 
 appConfig: |
+  organization:
+    name: Platformers Community
+
   app:
-    baseUrl: http://${BASE_URL}:7007
+    title: Platformers Community Backstage
+    baseUrl: ${BASE_URL}:7007
 
   backend:
-    baseUrl: http://${BASE_URL}:7007
+    baseUrl: ${BASE_URL}:7007
     listen: ':7007'
-
+    
     database:
       client: pg
       connection:
@@ -80,6 +84,21 @@ appConfig: |
     github:
       - host: github.com
         token: ${GITHUB_TOKEN}
+  auth:
+    # see https://backstage.io/docs/auth/ to learn about auth providers
+    providers: {}
+
+  scaffolder:
+
+  techdocs:
+    builder: 'local'
+    generator:
+      runIn: 'docker'
+    publisher:
+      type: 'local'
+
+  scorecards:
+    test: none
 
   catalog:
     locations:

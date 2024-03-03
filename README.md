@@ -60,3 +60,9 @@ EOF
 ```bash
 helm upgrade --install  backstage ./backstage -n backstage
 ```
+
+## Go to Backstage UI
+
+```bash
+open http://127.0.0.1:8080; kubectl port-forward svc/backstage -n backstage 8080:80
+```

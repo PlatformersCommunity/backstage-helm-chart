@@ -11,6 +11,10 @@ Powered by <img src="./img/platformers-logo.png" width=100 height=100>
 The Platformers Community
  </a>
 
+## Screenshot
+
+![screenshot](./img/platformers-backstage-screenshot.png)
+
 ## How to deploy
 
 1. Deploy PG using CNPG

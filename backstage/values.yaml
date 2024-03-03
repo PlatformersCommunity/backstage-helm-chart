@@ -54,7 +54,8 @@ postgres:
   password: password
 
 catalog:
-  location: "https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml"
+  demoCatalogLocation: "https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml"
+  customCatalogLocation: "None"
 
 backstage:
   baseURL: "http://localhost"
@@ -103,6 +104,22 @@ appConfig: |
   catalog:
     locations:
     - type: url
-      target: ${CATALOG_LOCATION}
+      target: ${DEMO_CATALOG_LOCATION}
       rules:
       - allow: [Component, System, API, Resource, Location]
+    - type: url
+      target: ${CUSTOM_CATALOG_LOCATION}
+      rules:
+      - allow: [Component, System, API, Resource, Location]
+
+  kubernetes:
+    serviceLocatorMethod:
+      type: 'multiTenant'
+    clusterLocatorMethods:
+      - type: 'config'
+        clusters:
+          - url: kubernetes.default.svc.cluster.local:443
+            name: local
+            authProvider: 'serviceAccount'
+            skipTLSVerify: false
+            skipMetricsLookup: true

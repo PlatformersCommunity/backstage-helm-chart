@@ -2,6 +2,9 @@
 
 ## How to deploy
 
+1. Deploy PG using CNPG
+2. Deploy Backstage
+
 ### Deploy CNPG
 
 - Deploy cnpg
@@ -53,16 +56,34 @@ EOF
 
 ## Deploy Backstage
 
-- Close this repo
+- Clone this repo
 
-- Install the chart
+- [Generate GH access token here](https://github.com/settings/tokens)
+
+The Required Permissions:
 
 ```bash
-helm upgrade --install  backstage ./backstage -n backstage
+Reading software components:
+- repo
+
+Reading organization data:
+- read:org
+- read:user
+- user:email
+
+Publishing software templates:
+- repo
+- workflow (if templates include GitHub workflows)
+```
+
+- Install the chart using your personal access token
+
+```bash
+helm upgrade --install  backstage ./backstage -n backstage --set github.accessToken=""
 ```
 
 ## Go to Backstage UI
 
 ```bash
-open http://127.0.0.1:8080; kubectl port-forward svc/backstage -n backstage 8080:80
+open http://127.0.0.1:7007; kubectl port-forward svc/backstage -n backstage 7007:7007
 ```

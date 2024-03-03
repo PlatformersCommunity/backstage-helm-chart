@@ -50,6 +50,7 @@ spec:
           - name: app-config
             mountPath: /app/app-config.cm.yaml
             subPath: app-config.cm.yaml
+      serviceAccountName: backstage-service-account
       volumes:
       - name: app-config
         configMap:

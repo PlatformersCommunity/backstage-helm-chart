@@ -1,5 +1,16 @@
 # backstage-helm-chart
 
+![Intro](./img/Backstage-Helm-Chart-intro.png)
+
+This is a Helm chart repo to deploy backsage.
+Deploy Backstage in 5 minutes.
+
+<br>
+<a href="https://www.platformers.community/">
+Powered by <img src="./img/platformers-logo.png" width=100 height=100>
+The Platformers Community
+ </a>
+
 ## How to deploy
 
 1. Deploy PG using CNPG

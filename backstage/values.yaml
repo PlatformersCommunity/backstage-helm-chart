@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: "ghcr.io/guymenahem/backstage/"
-  name: "backstage-argocd-workshop"
-  tag: "1.0.4"
+  repository: "ghcr.io/guymenahem/"
+  name: "backstage-platformers"
+  tag: "0.0.1"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -94,7 +94,7 @@ appConfig: |
   techdocs:
     builder: 'local'
     generator:
-      runIn: 'docker'
+      runIn: 'local'
     publisher:
       type: 'local'
 

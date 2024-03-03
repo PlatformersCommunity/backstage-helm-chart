@@ -27,7 +27,7 @@ spec:
           image: "{{ .Values.image.repository }}{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["node"]
-          args: ["packages/backend", "--config", "app-config.yaml", "--config", "app-config.cm.yaml"]
+          args: ["packages/backend", "--config", "app-config.cm.yaml"]
           ports:
             - name: http
               containerPort: 7007
@@ -50,6 +50,7 @@ spec:
           - name: app-config
             mountPath: /app/app-config.cm.yaml
             subPath: app-config.cm.yaml
+      serviceAccountName: backstage-service-account
       volumes:
       - name: app-config
         configMap:

@@ -27,7 +27,7 @@ podAnnotations: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 7007
 
 resources: 
    limits:
@@ -54,20 +54,25 @@ postgres:
   password: password
 
 catalog:
-  location: "https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml"
+  demoCatalogLocation: "https://github.com/PlatformersCommunity/backstage-helm-chart/blob/main/demo-catalog/all.yaml"
+  customCatalogLocation: "None"
 
 backstage:
-  baseURL: "https://127.0.0.1:8080/"
+  baseURL: "http://localhost"
 
 
 appConfig: |
+  organization:
+    name: Platformers Community
+
   app:
-    baseUrl: http://${BASE_URL}:7007
+    title: Platformers Community Backstage
+    baseUrl: ${BASE_URL}:7007
 
   backend:
-    baseUrl: http://${BASE_URL}:7007
+    baseUrl: ${BASE_URL}:7007
     listen: ':7007'
-
+    
     database:
       client: pg
       connection:
@@ -80,10 +85,41 @@ appConfig: |
     github:
       - host: github.com
         token: ${GITHUB_TOKEN}
+  auth:
+    # see https://backstage.io/docs/auth/ to learn about auth providers
+    providers: {}
+
+  scaffolder:
+
+  techdocs:
+    builder: 'local'
+    generator:
+      runIn: 'docker'
+    publisher:
+      type: 'local'
+
+  scorecards:
+    test: none
 
   catalog:
     locations:
     - type: url
-      target: ${CATALOG_LOCATION}
+      target: ${DEMO_CATALOG_LOCATION}
       rules:
       - allow: [Component, System, API, Resource, Location]
+    - type: url
+      target: ${CUSTOM_CATALOG_LOCATION}
+      rules:
+      - allow: [Component, System, API, Resource, Location]
+
+  kubernetes:
+    serviceLocatorMethod:
+      type: 'multiTenant'
+    clusterLocatorMethods:
+      - type: 'config'
+        clusters:
+          - url: kubernetes.default.svc.cluster.local:443
+            name: local
+            authProvider: 'serviceAccount'
+            skipTLSVerify: false
+            skipMetricsLookup: true

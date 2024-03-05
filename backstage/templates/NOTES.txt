@@ -1,7 +1,20 @@
 Thank you for installing {{ .Chart.Name }}.
 
+
+.______        ___       ______  __  ___      _______.___________.    ___       _______  _______ 
+|   _  \      /   \     /      ||  |/  /     /       |           |   /   \     /  _____||   ____|
+|  |_)  |    /  ^  \   |  ,----'|  '  /     |   (----`---|  |----`  /  ^  \   |  |  __  |  |__   
+|   _  <    /  /_\  \  |  |     |    <       \   \       |  |      /  /_\  \  |  | |_ | |   __|  
+|  |_)  |  /  _____  \ |  `----.|  .  \  .----)   |      |  |     /  _____  \ |  |__| | |  |____ 
+|______/  /__/     \__\ \______||__|\__\ |_______/       |__|    /__/     \__\ \______| |_______|
+                                                                                                 
+
 This is the unofficial Helm chart for backstage.
 
 To explore your backstage deployment please run the following command:
+
+open http://127.0.0.1:7007
+kubectl port-forward svc/backstage -n backstage 7007:7007
+
 
 

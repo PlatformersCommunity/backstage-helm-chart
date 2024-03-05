@@ -25,8 +25,8 @@ The Platformers Community
 - Deploy cnpg
 
 ```bash
-helm repo add cnpg https://cloudnative-pg.github.io/charts;
-helm repo update;
+helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo update
 helm upgrade --install cnpg cnpg/cloudnative-pg --namespace cnpg-system --create-namespace 
 ```
 
@@ -100,5 +100,6 @@ helm upgrade --install  backstage ./backstage -n backstage --set github.accessTo
 ## Go to Backstage UI
 
 ```bash
-open http://127.0.0.1:7007; kubectl port-forward svc/backstage -n backstage 7007:7007
+open http://127.0.0.1:7007
+kubectl port-forward svc/backstage -n backstage 7007:7007
 ```

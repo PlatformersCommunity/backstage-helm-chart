@@ -71,8 +71,6 @@ EOF
 
 ## Deploy Backstage
 
-- Clone this repo
-
 - [Generate GH access token here](https://github.com/settings/tokens)
 
 The Required Permissions:
@@ -94,7 +92,9 @@ Publishing software templates:
 - Install the chart using your personal access token
 
 ```bash
-helm upgrade --install  backstage ./backstage -n backstage --set github.accessToken=""
+helm repo add platformers-community https://platformerscommunity.github.io/backstage-helm-chart/
+helm repo update
+helm upgrade --install backstage platformers-community/backstage -n backstage --set github.accessToken=""
 ```
 
 ## Go to Backstage UI

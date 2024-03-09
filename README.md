@@ -89,12 +89,24 @@ Publishing software templates:
 - workflow (if templates include GitHub workflows)
 ```
 
+- Export your token to be used by the chart
+
+```bash
+export GH_TOKEN=YOUR-TOKEN
+```
+
 - Install the chart using your personal access token
 
 ```bash
-helm repo add platformers-community https://platformerscommunity.github.io/backstage-helm-chart/
+helm repo add platformers-community http://helm.platformers.community/
 helm repo update
-helm upgrade --install backstage platformers-community/backstage -n backstage --set github.accessToken=""
+helm upgrade --install backstage platformers-community/backstage -n backstage --set github.accessToken=${GH_TOKEN}
+```
+
+If you have to enforce HTTPS, use this Helm repo:
+
+``` bash
+helm repo add platformers-community https://platformerscommunity.github.io/backstage-helm-chart/
 ```
 
 ## Go to Backstage UI

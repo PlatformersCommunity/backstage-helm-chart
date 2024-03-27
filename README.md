@@ -2,7 +2,7 @@
 
 ![Intro](./img/Backstage-Helm-Chart-intro.png)
 
-This is a Helm chart repo to deploy backsage.
+This is a Helm chart repo to deploy backstage.
 Deploy Backstage in 5 minutes.
 
 <br>

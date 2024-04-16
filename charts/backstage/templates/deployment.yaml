@@ -50,7 +50,9 @@ spec:
           - name: app-config
             mountPath: /app/app-config.cm.yaml
             subPath: app-config.cm.yaml
+      {{- if .Values.serviceAccount.create }}
       serviceAccountName: backstage-service-account
+      {{- end }}
       volumes:
       - name: app-config
         configMap:

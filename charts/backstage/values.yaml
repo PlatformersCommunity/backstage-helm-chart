@@ -43,6 +43,10 @@ tolerations: []
 
 affinity: {}
 
+additionalConfigMapMounts: []
+# - configMap: ca-bundle
+#   mountPath: /etc/ssl/bundle.pem
+#   subPath: bundle.pem
 
 github:
   accessToken: ""

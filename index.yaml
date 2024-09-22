@@ -3,6 +3,16 @@ entries:
   backstage:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-09-22T05:48:51.863028326Z"
+    description: The Backstage Helm Chart
+    digest: fad1474e49f97ca2aaef369a746423ecf037ed5c571b830fa01429d3b0b54b8f
+    name: backstage
+    type: application
+    urls:
+    - https://github.com/PlatformersCommunity/backstage-helm-chart/releases/download/backstage-0.3.0/backstage-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-09-22T05:04:23.932129938Z"
     description: The Backstage Helm Chart
     digest: a6fbebcb882b1e4e45f7cc7bd4e16ce371512aef14b323ff3f14cee6d9b7ced1
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/PlatformersCommunity/backstage-helm-chart/releases/download/backstage-0.1.0/backstage-0.1.0.tgz
     version: 0.1.0
-generated: "2024-09-22T05:04:23.932139456Z"
+generated: "2024-09-22T05:48:51.863045348Z"

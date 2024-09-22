@@ -47,9 +47,14 @@ spec:
             - configMapRef:
                 name: {{ include "backstage.name" . }}-config
           volumeMounts:
+          {{- range $k, $v := .Values.additionalConfigMapMounts }}
           - name: app-config
             mountPath: /app/app-config.cm.yaml
             subPath: app-config.cm.yaml
+          - mountPath: {{ $v.mountPath }}
+            name: {{ printf "additional-cm-%d" $k }}
+            subPath: {{ $v.subPath }}
+          {{- end }}
       {{- if .Values.serviceAccount.create }}
       serviceAccountName: backstage-service-account
       {{- end }}
@@ -57,6 +62,11 @@ spec:
       - name: app-config
         configMap:
           name: {{ include "backstage.name" . }}-app-config
+      {{- range $k, $v := .Values.additionalConfigMapMounts }}
+      - name: {{ printf "additional-cm-%d" $k }}
+        configMap:
+          name: {{ $v.configMap }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

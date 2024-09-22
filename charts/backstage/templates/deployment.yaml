@@ -55,7 +55,9 @@ spec:
             name: {{ printf "additional-cm-%d" $k }}
             subPath: {{ $v.subPath }}
           {{- end }}
+      {{- if .Values.serviceAccount.create }}
       serviceAccountName: backstage-service-account
+      {{- end }}
       volumes:
       - name: app-config
         configMap:

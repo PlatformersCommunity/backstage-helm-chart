@@ -23,25 +23,30 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+clusterRoleBinding:
+  # Specifies whether a cluster role binding should be created
+  create: true
+
 podAnnotations: {}
 
 service:
   type: ClusterIP
   port: 7007
 
-resources: 
-   limits:
-     cpu: 1000m
-     memory: 512Mi
-   requests:
-     cpu: 100m
-     memory: 128Mi
+resources:
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
 
 additionalConfigMapMounts: []
 # - configMap: ca-bundle
@@ -63,7 +68,6 @@ catalog:
 
 backstage:
   baseURL: "http://localhost"
-
 
 appConfig: |
   organization:

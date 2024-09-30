@@ -47,10 +47,10 @@ spec:
             - configMapRef:
                 name: {{ include "backstage.name" . }}-config
           volumeMounts:
-          {{- range $k, $v := .Values.additionalConfigMapMounts }}
           - name: app-config
             mountPath: /app/app-config.cm.yaml
             subPath: app-config.cm.yaml
+          {{- range $k, $v := .Values.additionalConfigMapMounts }}
           - mountPath: {{ $v.mountPath }}
             name: {{ printf "additional-cm-%d" $k }}
             subPath: {{ $v.subPath }}
